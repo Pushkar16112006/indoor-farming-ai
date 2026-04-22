@@ -14,10 +14,7 @@ export default function LoginForm() {
     setLoading(true);
     setMessage("");
     
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     if (error) setMessage(error.message);
     else setMessage("Check your email for the confirmation link!");
@@ -30,15 +27,11 @@ export default function LoginForm() {
     setLoading(true);
     setMessage("");
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) setMessage(error.message);
     else {
       setMessage("Logged in successfully!");
-      // window.location.href = "/dashboard"; 
     }
     
     setLoading(false);
